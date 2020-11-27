@@ -16,6 +16,7 @@ class Colours:
     def __init__(self):
         pass
 
+    # Block characters
     BLOCK0 = '\u2591'  # Emptiest block
     BLOCK1 = '\u2592'  # Semi-empty block
     BLOCK2 = '\u2593'  # Semi-full block
@@ -24,8 +25,22 @@ class Colours:
     HEADER = '\033[95m'
     ENDC = '\033[0m'
 
-    def Colour8Bit(n):
+    def text8(n):
+        '''
+        From ANSI escape code wiki:
+        0-7: Standard colours
+        8-15: High intensity colours
+        16-231: 6x6x6 cube (216 colours): 16 + 36 x r + 6 x g + b
+        (0 <= r, g, b <= 5)
+        232-255: grayscale from black to white in 24 steps
+        '''
         return ('\u001b[38;5;' + str(n) + 'm')
+
+    def back8(n):
+        '''
+        Same idea as "text8", but for background colour
+        '''
+        return ('\u001b[48;5;' + str(n) + 'm')
 
     def Colour8BitTest():
         '''
@@ -36,9 +51,8 @@ class Colours:
         for i in range(0, 16):
             for j in range(0, 16):
                 string = str(16 * i + j)
-                #sys.stdout.write("\u001b[38;5;"+string+'m '+string.ljust(4))
                 # Coloured Background Test
-                sys.stdout.write("\u001b[48;5;" + string + 'm ' + ' ') #+ string.ljust(4))
+                sys.stdout.write("\u001b[48;5;" + string + 'm ' + ' ')
             print("\u001b[0m")  # Reset formatting and end of each line
 
 
@@ -59,7 +73,6 @@ def main():
     Performs a couple of test operations to ensure all of the ANSI codes
     are functioning as intended and are supported on the user's system.
     '''
-    #print(Colors.HEADER + 'Header Text' + Colours.ENDC + ' Not Header Text')
     Colours.Colour8BitTest()
     pass
 
