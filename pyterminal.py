@@ -25,7 +25,7 @@ class Colours:
     ENDC = '\033[0m'
 
     def Colour8Bit(n):
-        print(n)
+        return ('\u001b[38;5;' + str(n) + 'm')
 
     def Colour8BitTest():
         '''
