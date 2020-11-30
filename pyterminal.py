@@ -11,7 +11,7 @@ import sys
 
 class Colours:
     '''
-    The main class for changing text and background colours.
+    The main class for changing text colours.
     '''
     def __init__(self):
         pass
@@ -75,6 +75,27 @@ class Colours:
             print("\u001b[0m")  # Reset formatting and end of each line
 
 
+class Format:
+    '''
+    The main class used for handling text formatting.
+    '''
+
+    def __init__(self):
+        pass
+
+    BOLD = '\033[1m'
+    FAINT = DIM = '\033[2m'
+    ITALIC = SLANT = SLANTED = '\033[3m'
+    UNDERLINE = '\033[4m'
+    BLINK = SLOW_BLINK = '\033[5m'
+    FAST_BLINK = '\033[6m'  # Very rarely supported according to wikipedia
+    REVERSE = INVERT = '\033[7m'  # Also rarely works
+    CONCEAL = HIDE = '\033[8m'  # Again, rarely works
+    CROSSED_OUT = STRIKETHROUGH = MARKED = '\033[9m'
+    DOUBLE_UNDERLINE = '\033[21m'
+    OVERLINE = '\033[53m'
+
+
 class Colors(Colours):
     '''
     A derivation of the Colours class for the American spelling.
@@ -86,6 +107,10 @@ class Colors(Colours):
         #super(Colors, self).Colour8Bit(n)
         Colours.Colour8Bit(n)
 
+def SGR(text, start, end):
+    for i in range(start, end+1):
+        print(str(i) + ': ' + '\033[' + str(i) + 'm ' + text + '\033[0m')
+
 def main():
     '''
     A default function to run when the file is run directly.
@@ -93,6 +118,7 @@ def main():
     are functioning as intended and are supported on the user's system.
     '''
     Colours.Colour8BitTest()
+    SGR('Sample text sentence.', 1, 74)
     pass
 
 if __name__ == '__main__':
