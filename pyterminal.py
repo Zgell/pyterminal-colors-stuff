@@ -22,15 +22,27 @@ class Colours:
     BLOCK2 = '\u2593'  # Semi-full block
     BLOCK3 = '\u2588'  # Fullest block
 
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+    # 4-bit ANSI codes (should be supported by most terminals)
+    BLACK = '\033[30m'
+    RED = '\033[31m'
+    GREEN = '\033[32m'
+    YELLOW = '\033[33m'
+    BLUE = '\033[34m'
+    MAGENTA = '\033[35m'
+    CYAN = '\033[36m'
+    WHITE = LIGHTGRAY = LIGHTGREY = '\033[37m'
+    GRAY = GREY = BLACK2 = '\033[90m'
+    BRIGHTRED = RED2 = FAIL = ERROR = '\033[91m'
+    BRIGHTGREEN = GREEN2 = OKGREEN = '\033[92m'
+    BRIGHTYELLOW = YELLOW2 = WARNING = '\033[93m'
+    BRIGHTBLUE = BLUE2 = OKBLUE = '\033[94m'
+    BRIGHTMAGENTA = MAGENTA2 = HEADER = '\033[95m'
+    BRIGHTCYAN = CYAN2 = OKCYAN = '\033[96m'
+    BRIGHTWHITE = WHITE2 = '\033[97m'
+
+    ENDC = RESET = '\033[0m'
+    #BOLD = '\033[1m'
+    #UNDERLINE = '\033[4m'
 
     def text8(n):
         '''
